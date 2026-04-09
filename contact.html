@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      min-width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(255, 255, 255);
+      flex-wrap: wrap;
+      background-image: url("images/cherry-tree-with-flowers.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    ul {
+      background-color: rgb(67, 73, 73);
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      margin-top: 0;
+      padding: 15px;
+      font-size: 1.5rem;
+    }
+
+    a {
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: rgb(105, 171, 216);
+      text-shadow: 0px 0px 5px rgb(255, 255, 255);
+    }
+
+    fieldset {
+      background-color: white;
+      color: #000000;
+      border: none;
+      margin: 80px auto;
+      width: 850px;
+      padding: 0 0 20px 0;
+    }
+
+    #flexrow1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: stretch;
+      border-bottom: 2px solid black;
+    }
+
+    .profile-link {
+      color: blue;
+    }
+
+    #imgBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #infoBox {
+      border-left: 1px solid black;
+      padding: 30px 40px;
+    }
+
+    p {
+      text-align: center;
+      border-bottom: 1px solid black;
+      padding-bottom: 10px;
+    }
+
+    .info {
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      width: 250px;
+      padding: 20px;
+      margin: 5px auto;
+      background-color: rgb(179, 226, 235);
+    }
+
+    .response {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      width: 250px;
+      padding: 10px;
+      margin: 10px auto;
+      background-color: rgb(179, 226, 235);
+    }
+
+    legend {
+      margin: auto;
+      font-weight: bolder;
+    }
+
+    input[type="submit"],
+    .send-btn {
+      display: flex;
+      margin: 15px auto 0;
+      padding: 10px 30px;
+      background-color: rgb(67, 73, 73);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover,
+    .send-btn:hover {
+      background-color: rgb(40, 45, 45);
+    }
+
+    /* ── Resume upload section ── */
+    .resume-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      width: 320px;
+      padding: 15px 20px;
+      margin: 10px auto;
+      background-color: rgb(179, 226, 235);
+    }
+
+    .resume-box legend {
+      margin-bottom: 8px;
+    }
+
+    .file-upload-label {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgb(67, 73, 73);
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .file-upload-label:hover {
+      background-color: rgb(40, 45, 45);
+    }
+
+    #resumeFile {
+      display: none;
+    }
+
+    #fileName {
+      font-size: 0.8rem;
+      color: #333;
+      margin-top: 6px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ── SMS notice ── */
+    .sms-note {
+      font-size: 0.75rem;
+      color: #555;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* ── Status message ── */
+    #statusMsg {
+      display: none;
+      text-align: center;
+      margin: 10px auto;
+      padding: 10px;
+      width: 320px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    #statusMsg.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    #statusMsg.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
+  <body>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <fieldset>
+      <section id="resume">
+        <div id="flexrow1">
+          <div id="imgBox">
+            <img
+              style="height: 200px"
+              src="../images/mail.png"
+              alt="Email icon" />
+          </div>
+          <div id="infoBox">
+            <table>
+              <h1>Contact Me</h1>
+              <tr>
+                <td>Name</td>
+                <td>Jason Dobbs</td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td>Chandler, AZ</td>
+              </tr>
+              <tr>
+                <td>Phone:</td>
+                <td>(480)703-6194</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>dobbsjason34@yahoo.com</td>
+              </tr>
+              <tr>
+                <td>Linkedin</td>
+                <td>
+                  <a
+                    href="https://www.linkedin.com/in/jason-dobbs-98898599"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="profile-link">
+                    LinkedIn Profile
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Website:</td>
+                <td>
+                  <a
+                    href="https://github.com/jdobbs34"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="profile-link">
+                    GitHub Profile
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <!-- <ul>
+                <li>Name: David Ayodele</li>
+                <li>Date of Birth: July, 31, 1983</li>
+                <li>Location: Phoenix, AZ</li>
+                <li>Phone: 602.888.8888</li>
+                <li>Email: test@test.com</li>
+                <li>Website: gitlab.com</li>
+            </ul> -->
+          </div>
+        </div>
+        <p>
+          Feel free to contact me here, via email or phone and I will reply
+          promptly.
+        </p>
+      </section>
+      <section id="experience">
+        <form>
+          <fieldset class="info-box">
+            <legend>Your Info</legend>
+            <label>
+              First Name
+              <input
+                type="text"
+                id="fname"
+                placeholder="Enter Your First Name"
+                class="info"
+                required />
+            </label>
+            <br />
+            <label>
+              Last Name
+              <input
+                type="text"
+                name="LastName"
+                id="lname"
+                placeholder="Enter Your Last Name"
+                class="info"
+                required />
+            </label>
+            <br />
+            <label>
+              Email
+              <input
+                type="text"
+                name="Email"
+                id="email"
+                class="info"
+                placeholder="Enter Your Email" />
+            </label>
+            <br />
+            <label>
+              Phone
+              <input
+                type="tel"
+                name="Phone"
+                id="phone"
+                class="info"
+                placeholder="Enter Your Phone Number" />
+            </label>
+            <br />
+          </fieldset>
+          <fieldset class="response">
+            <legend>Preferred Response</legend>
+            <select name="" id="prefResp">
+              <option value="Phone">Phone Call</option>
+              <option value="Email">Email</option>
+              <option value="Text message">Text message</option>
+            </select>
+          </fieldset>
+          <input type="submit" value="Send" class="send-btn" />
+        </form>
+      </section>
+      <!-- <div id="imgBox2">
+        <img
+          style="height: 200px"
+          src="../images/thank-you-thank-you-gifs.gif"
+          alt="Send gif" />
+      </div> -->
+    </fieldset>
+  </body>
+</html>

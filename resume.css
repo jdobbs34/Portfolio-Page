@@ -1,0 +1,82 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: calibri;
+  flex-wrap: wrap;
+  background-image: url("images/cherry-tree-with-flowers.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ul {
+  background-color: rgb(67, 73, 73);
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0;
+  padding: 15px;
+  font-size: 1.5rem;
+
+}
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(105, 171, 216);
+  text-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+fieldset {
+  background-color: white;
+  margin: 20px auto;
+  width: 850px;
+  padding: 40px 50px 80px 50px;
+  border: none;
+  box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.professional-experience {
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.info {
+  text-align: center;
+  margin-top: 0;
+  border-bottom: 1px solid black ;
+}
+
+.info a {
+  color: blue;
+}
+
+h2 {
+  margin-bottom: 0;
+  border-bottom: 1px solid black ;
+}
+
+h1
+h2
+p {
+ margin-left: 0.5px;
+ margin-right: 0.5px;
+}
