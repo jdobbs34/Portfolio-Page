@@ -1,0 +1,187 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  flex-wrap: wrap;
+  background-image: url("images/cherry-tree-with-flowers.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* .me {
+ width: 300px;
+ height: 300px;
+ margin-top: -193px;
+ border-radius: none;
+}  */
+
+ul {
+  background-color: rgb(67, 73, 73);
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin-top: 0;
+  padding: 15px;
+  font-size: 1.5rem;
+}
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(105, 171, 216);
+  text-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+#welcome-section {
+  text-align: center;
+}
+
+h1 {
+  text-shadow: 50px 15px 20px #000000;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-right: 400px;
+  margin-left: 400px;
+  text-shadow:  50px 15px 20px #000000;
+}
+
+h2 {
+ font-size: 3.6rem;
+ font-weight: bolder;
+ text-align: center;
+ display: flex;
+ justify-content: center;
+ margin-bottom: -350px;
+ margin-top: 300px;
+}
+
+.page:hover {
+  transform: scale(1.10);
+  transition-duration: 0.5s;
+  z-index: 6;
+}
+
+.page {
+ background-color: #333;
+ text-align: center;
+ border-radius: 10px;
+ height: 360px;
+ box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+ 
+}
+
+.projects {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 390px;
+}
+
+.project-img {
+  /* box-shadow: 5px 5px 5px rgba(80, 78, 78, 0.582); */
+  width: 500px;
+  height: 300px;
+  margin-top: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.survey {
+  z-index: 6;
+}
+
+.tribute {
+  z-index: 5;
+  margin-left: -300px;
+}
+
+.product-landing {
+  z-index: 4;
+  margin-left: -300px;
+}
+
+.recipe {
+  z-index: 3;
+  margin-left: -300px;
+}
+
+.omnifood {
+  z-index: 2;
+  margin-left: -300px;
+}
+
+.rick-and-morty-tracker {
+  z-index: 1;
+  margin-left: -300px;
+}
+
+.booktracker {
+  z-index: 0;
+  margin-left: -300px;
+}
+
+
+
+
+
+/* .tooltip-container {
+  /* Required for positioning the tooltip relative to the container */
+  /* position: relative;
+  display: inline-block; /* Helps wrap the element */
+  /* border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+}  */
+
+/* .tooltip-box {
+  /* Initially hide the box */
+  /* visibility: hidden; */
+  /* opacity: 0; Add opacity for a fade effect */
+
+  /* Position the box */
+  /* position: absolute; */
+  /* bottom: 125%; Position above the hovered element */
+  /* left: 50%; */
+  /* transform: translateX(-50%); Center the tooltip horizontally */
+
+  /* Style the box */
+  /* background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap; Keep text on one line if preferred */
+
+  /* Add a transition effect */
+  /* transition: opacity 0.3s, visibility 0.3s; */
+  /* z-index: 5; Ensure it appears above other elements */
+/* }  */
+
+/* Show the tooltip box when the container is hovered */
+ /* .tooltip-container:hover .tooltip-box {
+  visibility: visible;
+  opacity: 1;
+} */ 
+/* .projects:hover {
+  position: relative;
+  z-index: 5;
+  transform: scale(1.5);
+} 
+
