@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Portfolio Page</title>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("YOUR_PUBLIC_KEY");
+      })();
+    </script>
   </head>
   <style>
     body,
@@ -15,7 +23,6 @@
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
       color: rgb(255, 255, 255);
-      flex-wrap: wrap;
       background-image: url("images/cherry-tree-with-flowers.jpg");
       background-size: cover;
       background-repeat: no-repeat;
@@ -48,15 +55,21 @@
       text-shadow: 0px 0px 5px rgb(255, 255, 255);
     }
 
-    fieldset {
+    .profile-link {
+      color: blue;
+    }
+
+    /* Outer white card */
+    .page-card {
       background-color: white;
       color: #000000;
       border: none;
       margin: 80px auto;
       width: 850px;
-      padding: 0 0 20px 0;
+      padding: 0 0 30px 0;
     }
 
+    /* Top section: icon + contact info side by side */
     #flexrow1 {
       display: flex;
       flex-direction: row;
@@ -65,14 +78,11 @@
       border-bottom: 2px solid black;
     }
 
-    .profile-link {
-      color: blue;
-    }
-
     #imgBox {
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     #infoBox {
@@ -80,140 +90,145 @@
       padding: 30px 40px;
     }
 
-    p {
+    #infoBox h1 {
+      margin-top: 0;
+    }
+
+    #infoBox table td {
+      padding: 4px 12px 4px 0;
+    }
+
+    /* Tagline paragraph */
+    .tagline {
       text-align: center;
       border-bottom: 1px solid black;
-      padding-bottom: 10px;
+      padding: 10px 0;
+      margin: 0;
+      color: #000;
     }
 
-    .info {
-      margin-bottom: 10px;
-    }
-
+    /* Form fieldsets */
     .info-box {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
       border: 1px solid black;
-      width: 250px;
-      padding: 20px;
-      margin: 5px auto;
+      width: 280px;
+      padding: 15px 20px 20px;
+      margin: 20px auto 0;
       background-color: rgb(179, 226, 235);
+      color: #000;
     }
 
-    .response {
+    .response-box {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
       border: 1px solid black;
-      width: 250px;
-      padding: 10px;
-      margin: 10px auto;
+      width: 280px;
+      padding: 12px 20px 16px;
+      margin: 12px auto 0;
       background-color: rgb(179, 226, 235);
+      color: #000;
     }
 
     legend {
-      margin: auto;
-      font-weight: bolder;
+      font-weight: bold;
+      padding: 0 4px;
+      text-align: center;
     }
 
-    input[type="submit"],
-    .send-btn {
+    /* Form rows matching the screenshot style */
+    .form-row {
       display: flex;
-      margin: 15px auto 0;
-      padding: 10px 30px;
-      background-color: rgb(67, 73, 73);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover,
-    .send-btn:hover {
-      background-color: rgb(40, 45, 45);
-    }
-
-    /* ── Resume upload section ── */
-    .resume-box {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      border: 1px solid black;
-      width: 320px;
-      padding: 15px 20px;
-      margin: 10px auto;
-      background-color: rgb(179, 226, 235);
-    }
-
-    .resume-box legend {
+      width: 100%;
       margin-bottom: 8px;
     }
 
-    .file-upload-label {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: rgb(67, 73, 73);
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
+    .form-row label {
+      width: 90px;
       font-size: 0.9rem;
-      margin-top: 8px;
+      flex-shrink: 0;
     }
 
-    .file-upload-label:hover {
-      background-color: rgb(40, 45, 45);
+    .form-row input[type="text"],
+    .form-row input[type="email"],
+    .form-row input[type="tel"] {
+      flex: 1;
+      padding: 4px 6px;
+      font-size: 0.9rem;
+      border: 1px solid #aaa;
+      border-radius: 3px;
     }
 
-    #resumeFile {
-      display: none;
-    }
-
-    #fileName {
-      font-size: 0.8rem;
-      color: #333;
+    select {
+      padding: 4px 6px;
+      font-size: 0.9rem;
+      border: 1px solid #aaa;
+      border-radius: 3px;
       margin-top: 6px;
-      text-align: center;
-      font-style: italic;
+      width: 100%;
     }
 
-    /* ── SMS notice ── */
-    .sms-note {
-      font-size: 0.75rem;
+    /* SMS reminder */
+    #smsWarning {
+      display: none;
+      font-size: 0.78rem;
       color: #555;
-      text-align: center;
-      margin-top: 4px;
+      margin-top: 8px;
+      padding: 5px 8px;
+      background-color: #fff8dc;
+      border: 1px solid #e0c96e;
+      border-radius: 4px;
+      width: 100%;
     }
 
-    /* ── Status message ── */
+    /* Send button */
+    .send-btn {
+      display: block;
+      margin: 16px auto 0;
+      padding: 6px 20px;
+      background-color: #f0f0f0;
+      color: #000;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .send-btn:hover {
+      background-color: #ddd;
+    }
+    .send-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Status message */
     #statusMsg {
       display: none;
       text-align: center;
-      margin: 10px auto;
+      margin: 12px auto 0;
       padding: 10px;
-      width: 320px;
+      width: 280px;
       border-radius: 4px;
       font-weight: bold;
+      font-size: 0.9rem;
     }
-
     #statusMsg.success {
       background-color: #d4edda;
       color: #155724;
       border: 1px solid #c3e6cb;
     }
-
     #statusMsg.error {
       background-color: #f8d7da;
       color: #721c24;
       border: 1px solid #f5c6cb;
     }
   </style>
+
   <body>
-    <nav id="navbar">
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -221,137 +236,175 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <fieldset>
-      <section id="resume">
-        <div id="flexrow1">
-          <div id="imgBox">
-            <img
-              style="height: 200px"
-              src="../images/mail.png"
-              alt="Email icon" />
-          </div>
-          <div id="infoBox">
-            <table>
-              <h1>Contact Me</h1>
-              <tr>
-                <td>Name</td>
-                <td>Jason Dobbs</td>
-              </tr>
-              <tr>
-                <td>Location:</td>
-                <td>Chandler, AZ</td>
-              </tr>
-              <tr>
-                <td>Phone:</td>
-                <td>(480)703-6194</td>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td>dobbsjason34@yahoo.com</td>
-              </tr>
-              <tr>
-                <td>Linkedin</td>
-                <td>
-                  <a
-                    href="https://www.linkedin.com/in/jason-dobbs-98898599"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="profile-link">
-                    LinkedIn Profile
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Website:</td>
-                <td>
-                  <a
-                    href="https://github.com/jdobbs34"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="profile-link">
-                    GitHub Profile
-                  </a>
-                </td>
-              </tr>
-            </table>
-            <!-- <ul>
-                <li>Name: David Ayodele</li>
-                <li>Date of Birth: July, 31, 1983</li>
-                <li>Location: Phoenix, AZ</li>
-                <li>Phone: 602.888.8888</li>
-                <li>Email: test@test.com</li>
-                <li>Website: gitlab.com</li>
-            </ul> -->
-          </div>
+
+    <div class="page-card">
+      <!-- Top: icon + info -->
+      <div id="flexrow1">
+        <div id="imgBox">
+          <img
+            style="height: 200px"
+            src="../images/mail.png"
+            alt="Email icon" />
         </div>
-        <p>
-          Feel free to contact me here, via email or phone and I will reply
-          promptly.
-        </p>
-      </section>
-      <section id="experience">
-        <form>
-          <fieldset class="info-box">
-            <legend>Your Info</legend>
-            <label>
-              First Name
-              <input
-                type="text"
-                id="fname"
-                placeholder="Enter Your First Name"
-                class="info"
-                required />
-            </label>
-            <br />
-            <label>
-              Last Name
-              <input
-                type="text"
-                name="LastName"
-                id="lname"
-                placeholder="Enter Your Last Name"
-                class="info"
-                required />
-            </label>
-            <br />
-            <label>
-              Email
-              <input
-                type="text"
-                name="Email"
-                id="email"
-                class="info"
-                placeholder="Enter Your Email" />
-            </label>
-            <br />
-            <label>
-              Phone
-              <input
-                type="tel"
-                name="Phone"
-                id="phone"
-                class="info"
-                placeholder="Enter Your Phone Number" />
-            </label>
-            <br />
-          </fieldset>
-          <fieldset class="response">
-            <legend>Preferred Response</legend>
-            <select name="" id="prefResp">
-              <option value="Phone">Phone Call</option>
-              <option value="Email">Email</option>
-              <option value="Text message">Text message</option>
-            </select>
-          </fieldset>
-          <input type="submit" value="Send" class="send-btn" />
-        </form>
-      </section>
-      <!-- <div id="imgBox2">
-        <img
-          style="height: 200px"
-          src="../images/thank-you-thank-you-gifs.gif"
-          alt="Send gif" />
-      </div> -->
-    </fieldset>
+        <div id="infoBox">
+          <h1>Contact Me</h1>
+          <table>
+            <tr>
+              <td>Name</td>
+              <td>Jason Dobbs</td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td>Chandler, AZ</td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td>(480)703-6194</td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>dobbsjason34@yahoo.com</td>
+            </tr>
+            <tr>
+              <td>LinkedIn:</td>
+              <td>
+                <a
+                  href="https://www.linkedin.com/in/jason-dobbs-98898599"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="profile-link">
+                  LinkedIn Profile
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>GitHub:</td>
+              <td>
+                <a
+                  href="https://github.com/jdobbs34"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="profile-link">
+                  GitHub Profile
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="tagline">
+        Feel free to contact me here, via email or phone and I will reply
+        promptly.
+      </p>
+
+      <!-- Form -->
+      <form id="contactForm">
+        <!-- Your Info -->
+        <fieldset class="info-box">
+          <legend>Your Info</legend>
+          <div class="form-row">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="First Name" required />
+          </div>
+          <div class="form-row">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Last Name" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="Phone Number" />
+          </div>
+        </fieldset>
+
+        <!-- Preferred Response -->
+        <fieldset class="response-box">
+          <legend>Preferred Response</legend>
+          <select id="prefResp">
+            <option value="Email">Email</option>
+            <option value="Text Message">Text Message</option>
+          </select>
+          <div id="smsWarning">
+            &#128241; Make sure you entered your phone number above so Jason can
+            text you back.
+          </div>
+        </fieldset>
+
+        <!-- Status -->
+        <div id="statusMsg"></div>
+
+        <button type="submit" class="send-btn" id="submitBtn">Send</button>
+      </form>
+    </div>
+
+    <script>
+      // Show SMS reminder when Text Message is selected
+      document
+        .getElementById("prefResp")
+        .addEventListener("change", function () {
+          document.getElementById("smsWarning").style.display =
+            this.value === "Text Message" ? "block" : "none";
+        });
+
+      // Form submit → EmailJS sends your resume to the visitor
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const fname = document.getElementById("fname").value.trim();
+          const lname = document.getElementById("lname").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const prefResp = document.getElementById("prefResp").value;
+
+          const btn = document.getElementById("submitBtn");
+          const statusMsg = document.getElementById("statusMsg");
+
+          btn.disabled = true;
+          btn.textContent = "Sending...";
+          statusMsg.style.display = "none";
+
+          const templateParams = {
+            to_name: fname,
+            to_email: email,
+            from_name: "Jason Dobbs",
+            phone: phone || "Not provided",
+            pref_response: prefResp,
+            // Replace with your Google Drive resume share link
+            resume_link: "https://drive.google.com/YOUR_RESUME_LINK_HERE",
+          };
+
+          try {
+            // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with your EmailJS values
+            await emailjs.send(
+              "YOUR_SERVICE_ID",
+              "YOUR_TEMPLATE_ID",
+              templateParams,
+            );
+
+            statusMsg.className = "success";
+            statusMsg.textContent =
+              "✅ Sent! Check your email — Jason's resume is on its way.";
+            statusMsg.style.display = "block";
+            document.getElementById("contactForm").reset();
+            document.getElementById("smsWarning").style.display = "none";
+          } catch (err) {
+            console.error("EmailJS error:", err);
+            statusMsg.className = "error";
+            statusMsg.textContent =
+              "❌ Something went wrong. Please email Jason at dobbsjason34@yahoo.com";
+            statusMsg.style.display = "block";
+          }
+
+          btn.disabled = false;
+          btn.textContent = "Send";
+        });
+    </script>
   </body>
 </html>
