@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio Page</title>
-
+ 
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
       (function () {
-        emailjs.init("YOUR_PUBLIC_KEY");
+        /*
+          ✅ FIX 1: emailjs.init belongs HERE only — in the head, one time.
+          Replace YOUR_PUBLIC_KEY with your key from:
+          emailjs.com → Account → API Keys
+        */
+        emailjs.init("3xcUW3p5ZErmgZt1M");
       })();
     </script>
   </head>
+ 
   <style>
     body,
     html {
@@ -28,13 +34,13 @@
       background-repeat: no-repeat;
       background-position: center;
     }
-
+ 
     *,
     *::before,
     *::after {
       box-sizing: inherit;
     }
-
+ 
     ul {
       background-color: rgb(67, 73, 73);
       display: flex;
@@ -44,22 +50,21 @@
       padding: 15px;
       font-size: 1.5rem;
     }
-
+ 
     a {
       color: aliceblue;
       text-decoration: none;
     }
-
+ 
     a:hover {
       color: rgb(105, 171, 216);
       text-shadow: 0px 0px 5px rgb(255, 255, 255);
     }
-
+ 
     .profile-link {
       color: blue;
     }
-
-    /* Outer white card */
+ 
     .page-card {
       background-color: white;
       color: #000000;
@@ -68,8 +73,7 @@
       width: 850px;
       padding: 0 0 30px 0;
     }
-
-    /* Top section: icon + contact info side by side */
+ 
     #flexrow1 {
       display: flex;
       flex-direction: row;
@@ -77,28 +81,27 @@
       align-items: stretch;
       border-bottom: 2px solid black;
     }
-
+ 
     #imgBox {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-
+ 
     #infoBox {
       border-left: 1px solid black;
       padding: 30px 40px;
     }
-
+ 
     #infoBox h1 {
       margin-top: 0;
     }
-
+ 
     #infoBox table td {
       padding: 4px 12px 4px 0;
     }
-
-    /* Tagline paragraph */
+ 
     .tagline {
       text-align: center;
       border-bottom: 1px solid black;
@@ -106,8 +109,7 @@
       margin: 0;
       color: #000;
     }
-
-    /* Form fieldsets */
+ 
     .info-box {
       display: flex;
       flex-direction: column;
@@ -119,7 +121,7 @@
       background-color: rgb(179, 226, 235);
       color: #000;
     }
-
+ 
     .response-box {
       display: flex;
       flex-direction: column;
@@ -131,27 +133,26 @@
       background-color: rgb(179, 226, 235);
       color: #000;
     }
-
+ 
     legend {
       font-weight: bold;
       padding: 0 4px;
       text-align: center;
     }
-
-    /* Form rows matching the screenshot style */
+ 
     .form-row {
       display: flex;
       align-items: center;
       width: 100%;
       margin-bottom: 8px;
     }
-
+ 
     .form-row label {
       width: 90px;
       font-size: 0.9rem;
       flex-shrink: 0;
     }
-
+ 
     .form-row input[type="text"],
     .form-row input[type="email"],
     .form-row input[type="tel"] {
@@ -161,30 +162,53 @@
       border: 1px solid #aaa;
       border-radius: 3px;
     }
-
-    select {
+ 
+    /* Radio buttons */
+    .radio-group {
+      display: flex;
+      gap: 24px;
+      margin-top: 8px;
+    }
+ 
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #000;
+      width: auto;
+    }
+ 
+    .radio-group input[type="radio"] {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      accent-color: rgb(67, 73, 73);
+    }
+ 
+    /* Carrier dropdown — hidden until Text Message selected */
+    #carrierBox {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+    }
+ 
+    #carrierBox label {
+      font-size: 0.82rem;
+      color: #333;
+      display: block;
+      margin-bottom: 4px;
+    }
+ 
+    #carrierBox select {
+      width: 100%;
       padding: 4px 6px;
       font-size: 0.9rem;
       border: 1px solid #aaa;
       border-radius: 3px;
-      margin-top: 6px;
-      width: 100%;
     }
-
-    /* SMS reminder */
-    #smsWarning {
-      display: none;
-      font-size: 0.78rem;
-      color: #555;
-      margin-top: 8px;
-      padding: 5px 8px;
-      background-color: #fff8dc;
-      border: 1px solid #e0c96e;
-      border-radius: 4px;
-      width: 100%;
-    }
-
-    /* Send button */
+ 
     .send-btn {
       display: block;
       margin: 16px auto 0;
@@ -203,8 +227,7 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
-
-    /* Status message */
+ 
     #statusMsg {
       display: none;
       text-align: center;
@@ -226,7 +249,7 @@
       border: 1px solid #f5c6cb;
     }
   </style>
-
+ 
   <body>
     <nav>
       <ul>
@@ -236,7 +259,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-
+ 
     <div class="page-card">
       <!-- Top: icon + info -->
       <div id="flexrow1">
@@ -292,13 +315,13 @@
           </table>
         </div>
       </div>
-
+ 
       <!-- Tagline -->
       <p class="tagline">
         Feel free to contact me here, via email or phone and I will reply
         promptly.
       </p>
-
+ 
       <!-- Form -->
       <form id="contactForm">
         <!-- Your Info -->
@@ -321,90 +344,131 @@
             <input type="tel" id="phone" placeholder="Phone Number" />
           </div>
         </fieldset>
-
+ 
         <!-- Preferred Response -->
         <fieldset class="response-box">
           <legend>Preferred Response</legend>
-          <select id="prefResp">
-            <option value="Email">Email</option>
-            <option value="Text Message">Text Message</option>
-          </select>
-          <div id="smsWarning">
-            &#128241; Make sure you entered your phone number above so Jason can
-            text you back.
+ 
+          <!-- ✅ FIX 3: Radio buttons — no id needed, JS reads by name -->
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="prefResp" value="Email" checked />
+              Email
+            </label>
+            <label>
+              <input type="radio" name="prefResp" value="Text Message" />
+              Text Message
+            </label>
+          </div>
+ 
+          <!-- Carrier dropdown — appears when Text Message is picked -->
+          <div id="carrierBox">
+            <label>&#128241; Select your carrier:</label>
+            <select id="carrier">
+              <option value="">-- Select Carrier --</option>
+              <option value="@txt.att.net">AT&amp;T</option>
+              <option value="@vtext.com">Verizon</option>
+              <option value="@tmomail.net">T-Mobile</option>
+              <option value="@messaging.sprintpcs.com">Sprint</option>
+              <option value="@pm.sprint.com">Boost Mobile</option>
+              <option value="@mymetropcs.com">Metro PCS</option>
+              <option value="@sms.cricketwireless.com">Cricket</option>
+              <option value="@vmobl.com">Virgin Mobile</option>
+              <option value="@uscc.textmsg.com">US Cellular</option>
+            </select>
           </div>
         </fieldset>
-
+ 
         <!-- Status -->
         <div id="statusMsg"></div>
-
+ 
         <button type="submit" class="send-btn" id="submitBtn">Send</button>
       </form>
     </div>
-
+ 
     <script>
-      // Show SMS reminder when Text Message is selected
-      document
-        .getElementById("prefResp")
-        .addEventListener("change", function () {
-          document.getElementById("smsWarning").style.display =
+      // ✅ FIX 3: Use querySelectorAll to listen on radio buttons by name
+      document.querySelectorAll('input[name="prefResp"]').forEach(function (radio) {
+        radio.addEventListener("change", function () {
+          document.getElementById("carrierBox").style.display =
             this.value === "Text Message" ? "block" : "none";
         });
-
-      // Form submit → EmailJS sends your resume to the visitor
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const fname = document.getElementById("fname").value.trim();
-          const lname = document.getElementById("lname").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const phone = document.getElementById("phone").value.trim();
-          const prefResp = document.getElementById("prefResp").value;
-
-          const btn = document.getElementById("submitBtn");
-          const statusMsg = document.getElementById("statusMsg");
-
-          btn.disabled = true;
-          btn.textContent = "Sending...";
-          statusMsg.style.display = "none";
-
-          const templateParams = {
-            to_name: fname,
-            to_email: email,
-            from_name: "Jason Dobbs",
-            phone: phone || "Not provided",
-            pref_response: prefResp,
-            // Replace with your Google Drive resume share link
-            resume_link: "https://drive.google.com/YOUR_RESUME_LINK_HERE",
-          };
-
-          try {
-            // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with your EmailJS values
-            await emailjs.send(
-              "YOUR_SERVICE_ID",
-              "YOUR_TEMPLATE_ID",
-              templateParams,
-            );
-
-            statusMsg.className = "success";
-            statusMsg.textContent =
-              "✅ Sent! Check your email — Jason's resume is on its way.";
-            statusMsg.style.display = "block";
-            document.getElementById("contactForm").reset();
-            document.getElementById("smsWarning").style.display = "none";
-          } catch (err) {
-            console.error("EmailJS error:", err);
+      });
+ 
+      document.getElementById("contactForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+ 
+        const fname    = document.getElementById("fname").value.trim();
+        const lname    = document.getElementById("lname").value.trim();
+        const email    = document.getElementById("email").value.trim();
+        const phone    = document.getElementById("phone").value.trim();
+        const carrier  = document.getElementById("carrier").value;
+ 
+        // ✅ FIX 3: Read the CHECKED radio button value
+        const prefResp = document.querySelector('input[name="prefResp"]:checked').value;
+ 
+        const btn       = document.getElementById("submitBtn");
+        const statusMsg = document.getElementById("statusMsg");
+ 
+        // Validate phone + carrier if Text Message selected
+        if (prefResp === "Text Message") {
+          if (!phone) {
             statusMsg.className = "error";
-            statusMsg.textContent =
-              "❌ Something went wrong. Please email Jason at dobbsjason34@yahoo.com";
+            statusMsg.textContent = "❌ Please enter your phone number to receive a text.";
             statusMsg.style.display = "block";
+            return;
           }
-
-          btn.disabled = false;
-          btn.textContent = "Send";
-        });
+          if (!carrier) {
+            statusMsg.className = "error";
+            statusMsg.textContent = "❌ Please select your carrier to receive a text.";
+            statusMsg.style.display = "block";
+            return;
+          }
+        }
+ 
+        btn.disabled    = true;
+        btn.textContent = "Sending...";
+        statusMsg.style.display = "none";
+ 
+        // Build destination: email address OR SMS gateway address
+        const phoneDigits = phone.replace(/\D/g, "");
+        const toEmail = prefResp === "Text Message"
+          ? phoneDigits + carrier
+          : email;
+ 
+        const templateParams = {
+          to_name:       fname,
+          to_email:      toEmail,
+          from_name:     "Jason Dobbs",
+          phone:         phone || "Not provided",
+          pref_response: prefResp,
+          // ✅ Replace this with your Google Drive resume share link
+          resume_link:   "https://drive.google.com/file/d/1OMl5bTeTKLqJ1jZXnjEHEnkEOszb0sq2/view",
+        };
+ 
+        try {
+          // ✅ FIX 2 & 4: One single emailjs.send call with correct service ID
+          await emailjs.send("service_jblzjbl", "template_p6dnad9", templateParams);
+ 
+          statusMsg.className = "success";
+          statusMsg.textContent = prefResp === "Text Message"
+            ? "✅ Sent! You will receive a text shortly with Jason's resume link."
+            : "✅ Sent! Check your email — Jason's resume is on its way.";
+          statusMsg.style.display = "block";
+          document.getElementById("contactForm").reset();
+          document.getElementById("carrierBox").style.display = "none";
+ 
+        } catch (err) {
+          console.error("EmailJS error:", err);
+          statusMsg.className = "error";
+          statusMsg.textContent = "❌ Something went wrong. Please email Jason at dobbsjason34@yahoo.com";
+          statusMsg.style.display = "block";
+        }
+ 
+        btn.disabled    = false;
+        btn.textContent = "Send";
+      });
     </script>
   </body>
 </html>
+
