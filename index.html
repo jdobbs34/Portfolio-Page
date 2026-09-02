@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio Page</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      (function () {
+        /*
+          ✅ FIX 1: emailjs.init belongs HERE only — in the head, one time.
+          Replace YOUR_PUBLIC_KEY with your key from:
+          emailjs.com → Account → API Keys
+        */
+        emailjs.init("3xcUW3p5ZErmgZt1M");
+      })();
+    </script>
   </head>
   <body>
+    <div id="index"></div>
+    <!-- NAVBAR -->
     <nav id="navbar">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <a href="#index">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="resume.html">Resume</a>
+        <a href="#contact">Contact</a>
       </ul>
     </nav>
-    <section id="welcome-section">
+
+    <!-- Weclome Section -->
+
+    <section class="bg-section section-one" id="welcome-section">
       <h1>Welcome to My Portfolio Page</h1>
       <p>
         I'm a web developer who brings ideas to life through clean code and
@@ -24,7 +41,326 @@
         keep my skills sharp and my projects cutting-edge.
       </p>
     </section>
+
+    <!-- Project Section -->
+    <div id="projects"></div>
+    <section class="bg-section section-two" id="projects">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="project-tile">
+          <div class="survey page">
+            <a
+              href="https://cafe-amazon-survey-form.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="images/cafe-amazon.png"
+                alt="Image of coffee shop" />
+            </a>
+            <h3>Survey Page</h3>
+          </div>
+          <div class="tribute page">
+            <a
+              href="https://bruce-lee-tribute-page.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="images/bruce-lee-tribute.png"
+                alt="Picture of Bruce Lee in a yellow and black clothing" />
+            </a>
+            <h3>Tribute Page</h3>
+          </div>
+          <div class="product-landing page">
+            <a
+              href="https://samurai-sword-product-landing-page.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="images/samurai-sword-landing-page.png"
+                alt="Landing page of for Samaurai Sword Products" />
+            </a>
+            <h3>Product Landing Page</h3>
+          </div>
+          <div class="recipe page">
+            <a
+              href="https://flavorscape-blog.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="images/Flavorscape.png"
+                alt="A blog page about food" />
+            </a>
+            <h3>Food Blog</h3>
+          </div>
+          <div class="omnifood page">
+            <a
+              href="https://omnifood-dobbs.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="/images/Omnifood.png"
+                alt="A page about food delivery" />
+            </a>
+            <h3>Omnifood</h3>
+          </div>
+          <div class="rick-and-morty-tracker page">
+            <a
+              href="https://rick-and-morty-character-tracker.netlify.app/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="/images/rick-and-morty.png"
+                alt="A page about tracking Rick and Morty charcters" />
+            </a>
+            <h3>Rick and Morty Tracker</h3>
+          </div>
+          <div class="booktracker page">
+            <a
+              href="https://capstone-completion-frontend.onrender.com/"
+              target="_blank"
+              rel="noopener">
+              <img
+                class="project-img"
+                src="/images/booktracker.png"
+                alt="A page about tracking books you read" />
+            </a>
+            <h3>Book Tracker</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-section section-three" id="contact">
+      <div class="page-card">
+        <!-- Top: icon + info -->
+        <div id="flexrow1">
+          <div id="imgBox">
+            <img
+              style="height: 200px"
+              src="../images/mail.png"
+              alt="Email icon" />
+          </div>
+          <div id="infoBox">
+            <h1>Contact Me</h1>
+            <table>
+              <tr>
+                <td>Name</td>
+                <td>Jason Dobbs</td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td>Chandler, AZ</td>
+              </tr>
+              <tr>
+                <td>Phone:</td>
+                <td>(480)703-6194</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>dobbsjason34@yahoo.com</td>
+              </tr>
+              <tr>
+                <td>LinkedIn:</td>
+                <td>
+                  <a
+                    href="https://www.linkedin.com/in/jason-dobbs-98898599"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id="profile-link">
+                    LinkedIn Profile
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>GitHub:</td>
+                <td>
+                  <a
+                    href="https://github.com/jdobbs34"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id="profile-link">
+                    GitHub Profile
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tagline -->
+        <p class="tagline">
+          Feel free to contact me here, via email or phone and I will reply
+          promptly.
+        </p>
+
+        <!-- Form -->
+        <form id="contactForm">
+          <!-- Your Info -->
+          <fieldset class="info-box">
+            <legend>Your Info</legend>
+            <div class="form-row">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="First Name" required />
+            </div>
+            <div class="form-row">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Last Name" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Email" required />
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="Phone Number" />
+            </div>
+          </fieldset>
+
+          <!-- Preferred Response -->
+          <fieldset class="response-box">
+            <legend>Preferred Response</legend>
+
+            <!-- ✅ FIX 3: Radio buttons — no id needed, JS reads by name -->
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="prefResp" value="Email" checked />
+                Email
+              </label>
+              <label>
+                <input type="radio" name="prefResp" value="Text Message" />
+                Text Message
+              </label>
+            </div>
+
+            <!-- Carrier dropdown — appears when Text Message is picked -->
+            <div id="carrierBox">
+              <label>&#128241; Select your carrier:</label>
+              <select id="carrier">
+                <option value="">-- Select Carrier --</option>
+                <option value="@txt.att.net">AT&amp;T</option>
+                <option value="@vtext.com">Verizon</option>
+                <option value="@tmomail.net">T-Mobile</option>
+                <option value="@messaging.sprintpcs.com">Sprint</option>
+                <option value="@pm.sprint.com">Boost Mobile</option>
+                <option value="@mymetropcs.com">Metro PCS</option>
+                <option value="@sms.cricketwireless.com">Cricket</option>
+                <option value="@vmobl.com">Virgin Mobile</option>
+                <option value="@uscc.textmsg.com">US Cellular</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Status -->
+          <div id="statusMsg"></div>
+
+          <button type="submit" class="send-btn" id="submitBtn">Send</button>
+        </form>
+      </div>
+
+      <script>
+        // ✅ FIX 3: Use querySelectorAll to listen on radio buttons by name
+        document
+          .querySelectorAll('input[name="prefResp"]')
+          .forEach(function (radio) {
+            radio.addEventListener("change", function () {
+              document.getElementById("carrierBox").style.display =
+                this.value === "Text Message" ? "block" : "none";
+            });
+          });
+
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const fname = document.getElementById("fname").value.trim();
+            const lname = document.getElementById("lname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const carrier = document.getElementById("carrier").value;
+
+            // ✅ FIX 3: Read the CHECKED radio button value
+            const prefResp = document.querySelector(
+              'input[name="prefResp"]:checked',
+            ).value;
+
+            const btn = document.getElementById("submitBtn");
+            const statusMsg = document.getElementById("statusMsg");
+
+            // Validate phone + carrier if Text Message selected
+            if (prefResp === "Text Message") {
+              if (!phone) {
+                statusMsg.className = "error";
+                statusMsg.textContent =
+                  "❌ Please enter your phone number to receive a text.";
+                statusMsg.style.display = "block";
+                return;
+              }
+              if (!carrier) {
+                statusMsg.className = "error";
+                statusMsg.textContent =
+                  "❌ Please select your carrier to receive a text.";
+                statusMsg.style.display = "block";
+                return;
+              }
+            }
+
+            btn.disabled = true;
+            btn.textContent = "Sending...";
+            statusMsg.style.display = "none";
+
+            // Build destination: email address OR SMS gateway address
+            const phoneDigits = phone.replace(/\D/g, "");
+            const toEmail =
+              prefResp === "Text Message" ? phoneDigits + carrier : email;
+
+            const templateParams = {
+              to_name: fname,
+              to_email: toEmail,
+              from_name: "Jason Dobbs",
+              phone: phone || "Not provided",
+              pref_response: prefResp,
+              // ✅ Replace this with your Google Drive resume share link
+              resume_link:
+                "https://drive.google.com/file/d/1OMl5bTeTKLqJ1jZXnjEHEnkEOszb0sq2/view",
+            };
+
+            try {
+              // ✅ FIX 2 & 4: One single emailjs.send call with correct service ID
+              await emailjs.send(
+                "service_jblzjbl",
+                "template_p6dnad9",
+                templateParams,
+              );
+
+              statusMsg.className = "success";
+              statusMsg.textContent =
+                prefResp === "Text Message"
+                  ? "✅ Sent! You will receive a text shortly with Jason's resume link."
+                  : "✅ Sent! Check your email — Jason's resume is on its way.";
+              statusMsg.style.display = "block";
+              document.getElementById("contactForm").reset();
+              document.getElementById("carrierBox").style.display = "none";
+            } catch (err) {
+              console.error("EmailJS error:", err);
+              statusMsg.className = "error";
+              statusMsg.textContent =
+                "❌ Something went wrong. Please email Jason at dobbsjason34@yahoo.com";
+              statusMsg.style.display = "block";
+            }
+
+            btn.disabled = false;
+            btn.textContent = "Send";
+          });
+      </script>
+    </section>
     <!-- <img class="me" src="/images/me.jpg" alt="Picture of me" /> -->
   </body>
 </html>
-
