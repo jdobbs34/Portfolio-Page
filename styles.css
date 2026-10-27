@@ -95,10 +95,14 @@ a:hover {
   text-shadow: 0px 4px 20px  #000000;
 }
 
+h1 {
+  font-size: 3.6rem;
+  font-weight: lighter;
+}
+
 p {
-  font-size: 1.5rem;
-  margin-right: 400px;
-  margin-left: 400px;
+  font-size: 2.2rem;
+  margin: 0 320px; 
 }
 
 /* Project Section */
@@ -142,7 +146,7 @@ h2 {
 #projects {
   text-align: center;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .project-img {
@@ -381,12 +385,10 @@ h2 {
   }
 
 
-@media screen and (max-width: 1650) {
+@media screen and (max-width: 500) {
   #welcome-section {
-    text-align: ;
-    
-    min-width: 1650px;
-    text-shadow: 0px 4px 20px  #000000;
+   margin: 0 20px;
+  
   }
 }
 
