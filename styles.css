@@ -21,7 +21,7 @@ html {
  background-size: cover;
  background-attachment:fixed;
  overflow: hidden;
- margin-bottom: -1px;
+ padding: 24px;
 }
 
 .section-one{
@@ -92,7 +92,6 @@ a:hover {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  text-shadow: 0px 4px 20px  #000000;
 }
 
 h1 {
@@ -100,9 +99,10 @@ h1 {
   font-weight: lighter;
 }
 
-p {
+.intro {
   font-size: 2.2rem;
   margin: 0 320px; 
+  text-shadow: 0px 4px 20px  #000000;
 }
 
 /* Project Section */
@@ -114,12 +114,12 @@ p {
   flex-wrap: wrap;
   text-align: center;
   width: 100%;
-
 }
 
 h2 {
  font-size: 3.6rem;
- font-weight: bolder;
+ font-weight: lighter;
+ text-shadow: 0px 4px 20px  #000000;
 }
 
 .project-tile {
@@ -192,6 +192,16 @@ h2 {
   margin-left: -300px;
 }
 
+
+/* WordPress Section */
+
+  #wordpress-projects {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* Contact Section */
 
 #profile-link {
@@ -202,6 +212,7 @@ h2 {
     background-color: white;
     color: #000000;
     border: none;
+    font-size: 1.2rem;
     border-radius: 5px;
     margin: 80px auto;
     width: 850px;
